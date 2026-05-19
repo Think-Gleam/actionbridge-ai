@@ -91,3 +91,20 @@ npx.cmd expo start --web
 - **Real notification system**
 - **Dashboard persistence**
 - **Additional domains**
+
+---
+
+## How Google Antigravity Was Used
+
+Google Antigravity was used as the core development and orchestration workspace for:
+
+- reading PROJECT_BRIEF.md as source of truth
+- creating the execution workplan
+- designing the multi-agent workflow
+- scaffolding the Node.js backend
+- building the Expo React Native mobile/web app
+- debugging backend startup errors
+- fixing Gemini quota fallback mode
+- improving frontend/backend integration
+- generating Antigravity evidence logs
+- preparing the final demo trace
