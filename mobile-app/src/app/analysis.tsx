@@ -94,6 +94,23 @@ export default function AnalysisScreen() {
           ))}
         </Section>
 
+        {(parsedData.provider_used || parsedData.fallback_reason) && (
+          <Section title="Provider Info">
+            {parsedData.provider_used && (
+              <Text style={styles.providerText}>
+                <Text style={styles.providerLabel}>Provider Used: </Text>
+                {parsedData.provider_used}
+              </Text>
+            )}
+            {parsedData.fallback_reason && (
+              <Text style={styles.providerText}>
+                <Text style={styles.providerLabel}>Fallback Reason: </Text>
+                {parsedData.fallback_reason}
+              </Text>
+            )}
+          </Section>
+        )}
+
       </ScrollView>
     </View>
   );
@@ -134,5 +151,8 @@ const styles = StyleSheet.create({
   traceItem: { marginBottom: 16, paddingLeft: 12, borderLeftWidth: 2, borderLeftColor: '#38bdf8' },
   traceAgent: { color: '#f8fafc', fontSize: 15, fontWeight: '700', marginBottom: 4 },
   traceStatus: { color: '#4ade80', fontSize: 12, fontWeight: 'normal' },
-  traceSummary: { color: '#94a3b8', fontSize: 14, lineHeight: 20 }
+  traceSummary: { color: '#94a3b8', fontSize: 14, lineHeight: 20 },
+
+  providerText: { color: '#e2e8f0', fontSize: 14, marginBottom: 8, lineHeight: 20 },
+  providerLabel: { color: '#94a3b8', fontWeight: '700' }
 });
