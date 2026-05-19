@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator,
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 
+const API_BASE_URL = "https://actionbridge-backend-245238700911.asia-south1.run.app";
+
 const DEMO_SCENARIOS = [
   {
     title: 'Lahore Orders Drop',
@@ -27,7 +29,7 @@ export default function InputScreen() {
     if (!input) return;
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:3000/api/analyze', { content: input });
+      const res = await axios.post(`${API_BASE_URL}/api/analyze`, { content: input });
       router.push({
         pathname: '/analysis',
         params: { data: JSON.stringify(res.data) }
@@ -78,6 +80,8 @@ export default function InputScreen() {
         <TouchableOpacity style={styles.button} onPress={handleAnalyze} disabled={loading}>
           {loading ? <ActivityIndicator color="#ffffff" /> : <Text style={styles.buttonText}>Generate Action Plan</Text>}
         </TouchableOpacity>
+        
+        <Text style={styles.cloudLabel}>☁️ Cloud backend connected</Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -98,5 +102,6 @@ const styles = StyleSheet.create({
   label: { fontSize: 14, fontWeight: '600', color: '#38bdf8', marginBottom: 12, textTransform: 'uppercase', letterSpacing: 1 },
   input: { backgroundColor: '#0f172a', borderRadius: 12, padding: 16, color: '#f8fafc', fontSize: 16, minHeight: 160, textAlignVertical: 'top', borderWidth: 1, borderColor: '#334155' },
   button: { backgroundColor: '#0ea5e9', paddingVertical: 16, borderRadius: 12, alignItems: 'center', shadowColor: '#0ea5e9', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 5 },
-  buttonText: { color: '#ffffff', fontSize: 18, fontWeight: '700', letterSpacing: 0.5 }
+  buttonText: { color: '#ffffff', fontSize: 18, fontWeight: '700', letterSpacing: 0.5 },
+  cloudLabel: { textAlign: 'center', color: '#10b981', marginTop: 16, fontSize: 14, fontWeight: '600' }
 });
